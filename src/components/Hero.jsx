@@ -1,8 +1,14 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-16">
+    <motion.section 
+      initial={{ opacity: 0, y: 30 }} 
+      animate={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 0.6 }}
+      className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-16"
+    >
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
         Hi, I'm Vedant Bajaj
       </h1>
@@ -26,7 +32,7 @@ function Hero() {
           Download Resume
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
