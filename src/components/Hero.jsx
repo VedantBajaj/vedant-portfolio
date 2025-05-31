@@ -11,7 +11,7 @@ function Hero() {
     >
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30 z-0"
-        style={{ backgroundImage: "url('/tech-bg.png')" }}
+        style={{ backgroundImage: "url('/vedant-portfolio/tech-bg.png')" }}
       />
       <div className="relative z-10">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
