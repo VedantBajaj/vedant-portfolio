@@ -25,7 +25,7 @@ function Hero() {
           LinkedIn
         </a>
         <a
-          href="/Vedant_Bajaj_resume.pdf"
+          href="/vedant-portfolio/Vedant_Bajaj_resume.pdf"
           download
           className="inline-block px-4 py-2 border border-white hover:bg-white hover:text-black rounded text-sm sm:text-base"
         >
