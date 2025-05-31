@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vedant-portfolio/static/css/main.3b0c6967.css",
+    "main.js": "/vedant-portfolio/static/js/main.15f2dd21.js",
+    "index.html": "/vedant-portfolio/index.html",
+    "main.3b0c6967.css.map": "/vedant-portfolio/static/css/main.3b0c6967.css.map",
+    "main.15f2dd21.js.map": "/vedant-portfolio/static/js/main.15f2dd21.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3b0c6967.css",
+    "static/js/main.15f2dd21.js"
+  ]
+}
