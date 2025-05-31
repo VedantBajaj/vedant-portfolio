@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.3b0c6967.css","mappings":"AAAA,KAGE,wBAAyB,CADzB,4BAAgC,CADhC,QAGF","sources":["index.css"],"sourcesContent":["body {\r\n  margin: 0;\r\n  font-family: 'Inter', sans-serif;\r\n  background-color: #0f172a; /* Tailwind's slate-900 */\r\n}\r\n"],"names":[],"sourceRoot":""}
