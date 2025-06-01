@@ -25,9 +25,9 @@ function Experience() {
       <div className="mb-10">
         <h3 className="text-xl font-semibold">Software Developer Intern – Bizol</h3>
         <p className="text-gray-300 mt-2">
-          Contributed to scalable backend solutions for an internal logistics platform. Implemented REST APIs, optimized database queries, and supported deployment pipelines.
+            Engineered a SQL Server-based data integration and reconciliation system that reduced manual workload by 60%. Tuned complex queries and indexing strategies to boost database performance. Developed business intelligence dashboards for internal stakeholders, enhancing decision-making through real-time insights.
         </p>
-        <p className="text-sm text-blue-400 mt-1">#NodeJS #Express #MongoDB #APIs #BackendDevelopment</p>
+        <p className="text-sm text-blue-400 mt-1">#SQLServer #DataIntegration #Dashboarding #PerformanceTuning #BusinessIntelligence</p>
       </div>
     </motion.section>
   );
