@@ -18,7 +18,10 @@ function Hero() {
           Hi, I'm Vedant Bajaj
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-gray-300">
-          Software Engineer | AI & ML Enthusiast | M.S. @ UTD
+          Software Engineer | AI & ML Enthusiast
+        </p>
+        <p className="mt-4 text-lg sm:text-xl text-gray-300">
+           M.S. @ UTD
         </p>
         <p className="mt-2 text-md sm:text-lg text-gray-400">
           Turning ideas into impactful software through code and creativity.
