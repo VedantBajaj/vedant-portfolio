@@ -23,7 +23,7 @@ function Experience() {
       </div>
 
       <div className="mb-10">
-        <h3 className="text-xl font-semibold">Software Developer Intern – Bizol</h3>
+        <h3 className="text-xl font-semibold">Software Developer Intern – Bizol IT Services</h3>
         <p className="text-gray-300 mt-2">
             Engineered a SQL Server-based data integration and reconciliation system that reduced manual workload by 60%. Tuned complex queries and indexing strategies to boost database performance. Developed business intelligence dashboards for internal stakeholders, enhancing decision-making through real-time insights.
         </p>
