@@ -13,12 +13,15 @@ function Hero() {
         className="absolute inset-0 bg-cover bg-center opacity-30 z-0"
         style={{ backgroundImage: "url('/vedant-portfolio/tech-bg.png')" }}
       />
-      <div className="relative z-10">
+      <div className="relative z-10 pt-16">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
           Hi, I'm Vedant Bajaj
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-gray-300">
-          Software Engineer | AI & ML Enthusiast
+          Software Engineer | AI & ML Enthusiast | M.S. @ UTD
+        </p>
+        <p className="mt-2 text-md sm:text-lg text-gray-400">
+          Turning ideas into impactful software through code and creativity.
         </p>
         <div className="mt-6 space-x-4">
           <a
@@ -30,7 +33,7 @@ function Hero() {
             LinkedIn
           </a>
           <a
-             href="/vedant-portfolio/Vedant_Bajaj_resume.pdf"
+            href="/vedant-portfolio/Vedant_Bajaj_resume.pdf"
             download
             className="inline-block px-4 py-2 border border-white hover:bg-white hover:text-black rounded text-sm sm:text-base"
           >

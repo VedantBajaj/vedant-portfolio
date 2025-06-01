@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 function About() {
   return (
     <motion.section 
+      id="about"
       initial={{ opacity: 0 }} 
       whileInView={{ opacity: 1 }} 
       transition={{ duration: 0.6 }} 
@@ -14,7 +15,7 @@ function About() {
       <p className="text-lg leading-relaxed text-gray-300">
         I'm a Computer Engineering graduate student at the University of Texas at Dallas, passionate about
         building intelligent systems that automate tasks and enhance user experiences. With experience in
-        machine learning, OCR, and full-stack development, I aim to develop practical AI-driven applications.
+        machine learning, OCR, and software development, I aim to develop practical AI-driven applications.
       </p>
     </motion.section>
   );

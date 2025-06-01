@@ -1,29 +1,35 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 function Experience() {
   return (
-    <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6">Experience</h2>
-      <div className="space-y-8">
-        <div>
-          <h3 className="text-xl font-semibold">Rabbit and Tortoise Technology (Software Engineer)</h3>
-          <p className="text-sm text-gray-400">Nov 2022 – Sep 2023 | India</p>
-          <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
-            <li>Built an OCR pipeline with 95% accuracy using Python, OpenCV, and PyTesseract.</li>
-            <li>Engineered a speech-to-text grocery system with 98% transcription accuracy.</li>
-            <li>Developed regex-based extraction for structured list generation.</li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-xl font-semibold">Bizsol IT Services (Software Intern)</h3>
-          <p className="text-sm text-gray-400">Aug 2021 – Dec 2021 | India</p>
-          <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
-            <li>Optimized SQL Server queries and indexing, improving performance by 40%.</li>
-            <li>Created interactive dashboards for business insights.</li>
-          </ul>
-        </div>
+    <motion.section
+      id="experience"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="px-4 sm:px-6 lg:px-8 py-16 max-w-4xl mx-auto"
+    >
+      <h2 className="text-3xl font-bold mb-8">Experience</h2>
+
+      <div className="mb-10">
+        <h3 className="text-xl font-semibold">Software Developer – Rabbit and Tortoise Technology Solutions</h3>
+        <p className="text-gray-300 mt-2">
+          Developed end-to-end OCR applications including preprocessing, text detection, and recognition pipelines.
+          Automated data extraction from scanned documents using PyTesseract and trained models, significantly reducing manual effort.
+        </p>
+        <p className="text-sm text-blue-400 mt-1">#Python #OCR #PyTesseract #Automation #ComputerVision</p>
       </div>
-    </section>
+
+      <div className="mb-10">
+        <h3 className="text-xl font-semibold">Software Developer Intern – Bizol</h3>
+        <p className="text-gray-300 mt-2">
+          Contributed to scalable backend solutions for an internal logistics platform. Implemented REST APIs, optimized database queries, and supported deployment pipelines.
+        </p>
+        <p className="text-sm text-blue-400 mt-1">#NodeJS #Express #MongoDB #APIs #BackendDevelopment</p>
+      </div>
+    </motion.section>
   );
 }
 
