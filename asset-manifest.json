@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/vedant-portfolio/static/css/main.b533a735.css",
-    "main.js": "/vedant-portfolio/static/js/main.3b91d372.js",
+    "main.css": "/vedant-portfolio/static/css/main.0f65e75d.css",
+    "main.js": "/vedant-portfolio/static/js/main.b5d7264f.js",
     "index.html": "/vedant-portfolio/index.html",
-    "main.b533a735.css.map": "/vedant-portfolio/static/css/main.b533a735.css.map",
-    "main.3b91d372.js.map": "/vedant-portfolio/static/js/main.3b91d372.js.map"
+    "main.0f65e75d.css.map": "/vedant-portfolio/static/css/main.0f65e75d.css.map",
+    "main.b5d7264f.js.map": "/vedant-portfolio/static/js/main.b5d7264f.js.map"
   },
   "entrypoints": [
-    "static/css/main.b533a735.css",
-    "static/js/main.3b91d372.js"
+    "static/css/main.0f65e75d.css",
+    "static/js/main.b5d7264f.js"
   ]
 }
