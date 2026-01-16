@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { profile } from '../data/profile';
 const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 <!doctype html>
 <html lang="en">
@@ -19,16 +20,16 @@ const { title, description } = Astro.props;
 
     <header class="sticky top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <a href={Astro.base} class="font-semibold tracking-tight">
+        <a href={base} class="font-semibold tracking-tight">
           {profile.name}
         </a>
         <nav class="hidden gap-6 text-sm text-white/70 md:flex">
-          <a class="hover:text-white" href={`${Astro.base}#case-studies`}>Case Studies</a>
-          <a class="hover:text-white" href={`${Astro.base}toolkit/`}>DE Toolkit</a>
-          <a class="hover:text-white" href={`${Astro.base}#projects`}>Projects</a>
-          <a class="hover:text-white" href={`${Astro.base}#skills`}>Skills</a>
-          <a class="hover:text-white" href={`${Astro.base}#resume`}>Resume</a>
-          <a class="hover:text-white" href={`${Astro.base}#contact`}>Contact</a>
+          <a class="hover:text-white" href={`${base}#case-studies`}>Case Studies</a>
+          <a class="hover:text-white" href={`${base}toolkit/`}>DE Toolkit</a>
+          <a class="hover:text-white" href={`${base}#projects`}>Projects</a>
+          <a class="hover:text-white" href={`${base}#skills`}>Skills</a>
+          <a class="hover:text-white" href={`${base}#Vedant_Bajaj_Data_Resume.pdf`} target="_blank" rel="noreferrer">Resume</a>
+          <a class="hover:text-white" href={`${base}#contact`}>Contact</a>
         </nav>
         <div class="flex items-center gap-2">
           <a class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
