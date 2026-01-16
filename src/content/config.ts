@@ -12,4 +12,4 @@ const caseStudies = defineCollection({
   })
 });
 
-export const collections = { caseStudies };
+export const collections = { "case-studies":caseStudies, };

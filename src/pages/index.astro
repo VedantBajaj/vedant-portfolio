@@ -5,7 +5,7 @@ import Badge from '../components/Badge.astro';
 import { profile } from '../data/profile';
 import { getCollection } from 'astro:content';
 
-const caseStudies = await getCollection('caseStudies');
+const caseStudies = await getCollection('case-studies');
 caseStudies.sort((a,b) => (a.data.date < b.data.date ? 1 : -1));
 ---
 
