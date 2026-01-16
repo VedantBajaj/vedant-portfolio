@@ -79,6 +79,32 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section class="mt-14">
+    <SectionTitle
+      kicker="What I've shipped"
+      title="Experience"
+      desc="Impact-first bullets, optimized for recruiter + hiring manager scan."
+    />
+
+    <div class="space-y-4">
+      {profile.experience.map((e) => (
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+            <div>
+              <p class="text-lg font-semibold">{e.role}</p>
+              <p class="text-white/70">{e.company}</p>
+            </div>
+            <p class="text-sm text-white/50">{e.dates}</p>
+          </div>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+            {e.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section id="projects" class="mt-14">
     <SectionTitle
@@ -133,31 +159,7 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section class="mt-14">
-    <SectionTitle
-      kicker="What I've shipped"
-      title="Experience"
-      desc="Impact-first bullets, optimized for recruiter + hiring manager scan."
-    />
-
-    <div class="space-y-4">
-      {profile.experience.map((e) => (
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-          <div class="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
-            <div>
-              <p class="text-lg font-semibold">{e.role}</p>
-              <p class="text-white/70">{e.company}</p>
-            </div>
-            <p class="text-sm text-white/50">{e.dates}</p>
-          </div>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
-            {e.bullets.map((b) => <li>{b}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
+  
 
   <!-- RESUME -->
   <section id="resume" class="mt-14">

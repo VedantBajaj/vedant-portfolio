@@ -8,12 +8,12 @@ export const profile = {
   github: 'https://github.com/VedantBajaj',
   resumePath: 'Vedant_Bajaj_Data_Resume.pdf',
   summary:
-    'MS Computer Engineering @ UT Dallas (May 2026) — Data Engineer focused on reliable ETL/ELT on GCP. Built Airflow/Dataflow pipelines into BigQuery, automated reconciliation workflows in SQL Server (60% time reduction), and shipped production OCR pipelines (95% detection).',
+  "Data Engineering graduate student with experience building and maintaining batch data pipelines for analytics. I focus on data correctness, performance, and making pipelines easy to operate and debug.",
   highlights: [
-    { label: 'Cloud ETL on GCP', detail: 'Airflow orchestration + Dataflow processing → BigQuery' },
-    { label: 'Impact', detail: '60% less manual reconciliation; 40% faster queries (SQL Server)' },
-    { label: 'Production pipeline work', detail: 'OCR system at 95% detection + deployed web app' }
-  ],
+  "Built and supported batch data pipelines for healthcare analytics and reporting.",
+  "Optimized SQL stored procedures and transformations to improve performance and reliability.",
+  "Handled data validation, ad-hoc fixes, and production data issues end-to-end.",
+],
   skills: {
     'Data Engineering & Cloud': ['Python', 'SQL', 'GCP', 'BigQuery', 'Apache Airflow', 'Dataflow', 'ETL Pipelines'],
     'Database Management': ['MySQL', 'SQL Server', 'Data Warehousing', 'Query Optimization', 'Database Design'],
@@ -23,32 +23,36 @@ export const profile = {
   },
   experience: [
     {
-      role: 'Data Engineering Intern',
-      company: 'Conifer Health Solutions (USA)',
-      dates: 'Sep 2024 – Present',
-      bullets: [
-        'Migrating on-prem ETL to GCP; orchestrating batch pipelines in Airflow and triggering Dataflow jobs that land in BigQuery (raw → curated).',
-        'Built Python + SQL transformations with safe re-runs (idempotent loads), plus basic quality checks (schema/row-count/dup signals) for reliability.'
-      ]
-    },
+  role: "Data Engineering Intern",
+  company: "Conifer Health Solutions",
+  dates: "2024 – Present",
+  bullets: [
+    "Built and maintained batch data pipelines that power healthcare analytics and reporting workflows.",
+    "Optimized SQL stored procedures and complex queries to reduce execution time and improve report performance.",
+    "Performed data validation checks such as row counts, null checks, and schema consistency to ensure data accuracy.",
+    "Investigated and resolved ad-hoc data issues reported by analytics and business teams.",
+    "Refactored SQL and transformation logic to make pipelines safer to re-run and easier to debug.",
+    "Worked closely with stakeholders to understand reporting requirements and deliver reliable, analytics-ready datasets.",
+  ]},
     {
-      role: 'Software Engineer',
-      company: 'Rabbit and Tortoise Technology Solutions (India)',
-      dates: 'Nov 2022 – Sep 2023',
-      bullets: [
-        'Built a modular OCR pipeline in Python (OOP) using OpenCV + PyTesseract; achieved ~95% text detection accuracy.',
-        'Reusable preprocessing/extraction/validation components reduced future dev effort ~40% and improved extraction consistency for downstream usage.'
-      ]
-    },
+  role: "Software Engineer",
+  company: "Rabbit & Tortoise Technology Solutions",
+  dates: "2022 – 2023",
+  bullets: [
+    "Built a document data extraction pipeline using OCR to convert unstructured files into structured text.",
+    "Improved extraction accuracy through image preprocessing and validation checks.",
+    "Designed the pipeline in modular stages to support reprocessing and future extensions.",
+    "Delivered the solution as a web-based workflow for easier use by non-technical users.",
+  ]},
     {
-      role: 'Software Engineer Intern',
-      company: 'Bizsol IT Services (India)',
-      dates: 'Aug 2021 – Dec 2021',
-      bullets: [
-        'Automated reconciliation with a SQL Server integration + reporting layer, reducing manual effort by 60%.',
-        'Improved query performance by 40% via indexing + query optimization; built dashboards for business visibility.'
-      ]
-    }
+  role: "Software Engineer Intern",
+  company: "Bizsol IT Services",
+  dates: "2021",
+  bullets: [
+    "Built SQL-based workflows for reconciliation and reporting across enterprise datasets.",
+    "Optimized slow queries using indexing and query refactoring to improve performance.",
+    "Supported analytics teams by delivering cleaner and more reliable reporting tables.",
+  ]}
   ],
   projects: [
     {
