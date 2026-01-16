@@ -6,7 +6,7 @@ export const profile = {
   phone: '(945) 291-0320',
   linkedin: 'https://www.linkedin.com/in/vedant-bajaj99/',
   github: 'https://github.com/VedantBajaj',
-  resumePath: './public/Vedant_Bajaj_Data_Resume.pdf',
+  resumePath: 'Vedant_Bajaj_Data_Resume.pdf',
   summary:
     'MS Computer Engineering @ UT Dallas (May 2026) — Data Engineer focused on reliable ETL/ELT on GCP. Built Airflow/Dataflow pipelines into BigQuery, automated reconciliation workflows in SQL Server (60% time reduction), and shipped production OCR pipelines (95% detection).',
   highlights: [
