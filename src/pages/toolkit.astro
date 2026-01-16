@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Badge from '../components/Badge.astro';
+import { profile } from '../data/profile';
+---
+
+<BaseLayout title="DE Toolkit" description="A practical data-engineering toolkit: patterns for reliability, quality, and cost control.">
+  <section class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft">
+    <p class="text-xs uppercase tracking-widest text-white/50">Killer Page</p>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Data Engineering Toolkit</h1>
+    <p class="mt-4 max-w-3xl text-lg text-white/75">
+      A recruiter-friendly, engineering-real snapshot of how I design pipelines: incremental loads, backfills, data quality,
+      and operational reliability. If you want the proof, the case studies show these patterns applied.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href={`${Astro.base}#case-studies`} class="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90">Go to Case Studies</a>
+      <a href={profile.resumePath} class="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">Download Resume</a>
+    </div>
+  </section>
+
+  <section class="mt-14">
+    <SectionTitle
+      kicker="Patterns I actually use"
+      title="Pipeline Design"
+      desc="When in doubt, optimize for: correctness → reliability → clarity → performance."
+    />
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Incremental loads (default)</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Use a <span class="text-white/90">watermark</span> (updated_at / event_time) or <span class="text-white/90">CDC</span> to avoid full reloads.</li>
+          <li>Make jobs <span class="text-white/90">idempotent</span> (safe to re-run without duplicates).</li>
+          <li>Store checkpoints (latest processed timestamp / batch id) with the pipeline metadata.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Backfills (inevitable)</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Design with a <span class="text-white/90">date-partitioned</span> model so backfills are scoped.</li>
+          <li>Separate “historical reprocess” DAGs from daily DAGs.</li>
+          <li>Track what changed (row-count deltas, checksum comparisons) to validate correctness.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14">
+    <SectionTitle
+      kicker="Reliability"
+      title="Orchestration with Airflow"
+      desc="How I keep DAGs stable and debuggable."
+    />
+
+    <div class="grid gap-4 md:grid-cols-3">
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">DAG hygiene</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {['Small tasks', 'Clear owners', 'SLA-aware', 'Retries'].map((t) => <Badge text={t} />)}
+        </div>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Prefer short tasks with clear inputs/outputs.</li>
+          <li>Use retries + timeouts for flaky external systems.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Idempotency</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {['Upserts', 'Partition overwrite', 'Dedup keys'].map((t) => <Badge text={t} />)}
+        </div>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Re-runs should not create duplicates.</li>
+          <li>Partition overwrite is my go-to for batch tables.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Observability</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {['Logs', 'Alerts', 'Run metadata'].map((t) => <Badge text={t} />)}
+        </div>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Log row counts, latency, and failure reasons per task.</li>
+          <li>Alert on “stuck” tasks + unusual volume changes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14">
+    <SectionTitle
+      kicker="Quality"
+      title="Data Quality Checks"
+      desc="Simple checks catch most issues early."
+    />
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Schema + freshness</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Schema validation (required columns, types, allowed enums).</li>
+          <li>Freshness checks (did today’s partition arrive?).</li>
+          <li>Null thresholds for critical fields.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Volume + duplicates</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Row-count deltas vs baseline to flag sudden drops/spikes.</li>
+          <li>Duplicate detection with business keys (or surrogate keys when needed).</li>
+          <li>Basic referential integrity checks for dimensional models.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14">
+    <SectionTitle
+      kicker="Warehouse"
+      title="BigQuery Performance + Cost"
+      desc="Make queries fast and bills predictable."
+    />
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Partitioning & clustering</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Partition by event date for large fact tables.</li>
+          <li>Cluster by common filters/joins (e.g., customer_id, facility_id).</li>
+          <li>Teach consumers to always filter partitions.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <p class="text-sm font-semibold">Curated layers</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+          <li>Raw layer = immutable landing.</li>
+          <li>Curated layer = stable contracts for analytics.</li>
+          <li>Prefer “thin” curated models that are easy to test and own.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14">
+    <SectionTitle
+      kicker="What I’m targeting"
+      title="Fit for Data Engineering Roles"
+      desc="If you’re hiring for DE, these are the problems I enjoy owning end-to-end."
+    />
+    <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+      <div class="flex flex-wrap gap-2">
+        {[
+          'ETL/ELT pipeline ownership',
+          'Airflow orchestration',
+          'BigQuery modeling',
+          'Data quality + validation',
+          'Backfills + reprocessing',
+          'Performance tuning',
+          'Clear runbooks + ops notes'
+        ].map((t) => <Badge text={t} />)}
+      </div>
+      <p class="mt-5 text-sm text-white/70">
+        Want the concrete examples? Jump to <a class="text-white underline" href={`${Astro.base}#case-studies`}>Case Studies</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

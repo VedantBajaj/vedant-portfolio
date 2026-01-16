@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 12 12 14;
+  --fg: 245 245 245;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+/* Nice selection */
+::selection { background: rgba(255,255,255,0.16); }
+
+/* Mermaid containers */
+.mermaid {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 16px;
+  overflow-x: auto;
+}

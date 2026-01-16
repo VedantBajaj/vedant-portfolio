@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import { profile } from '../data/profile';
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description ?? profile.summary} />
+    <title>{title ?? `${profile.name} — ${profile.title}`}</title>
+  </head>
+  <body class="min-h-screen">
+    <div class="pointer-events-none fixed inset-0 opacity-60">
+      <div class="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl"></div>
+      <div class="absolute bottom-[-160px] right-[-120px] h-[420px] w-[420px] rounded-full bg-white/10 blur-3xl"></div>
+    </div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href={Astro.base} class="font-semibold tracking-tight">
+          {profile.name}
+        </a>
+        <nav class="hidden gap-6 text-sm text-white/70 md:flex">
+          <a class="hover:text-white" href={`${Astro.base}#case-studies`}>Case Studies</a>
+          <a class="hover:text-white" href={`${Astro.base}toolkit/`}>DE Toolkit</a>
+          <a class="hover:text-white" href={`${Astro.base}#projects`}>Projects</a>
+          <a class="hover:text-white" href={`${Astro.base}#skills`}>Skills</a>
+          <a class="hover:text-white" href={`${Astro.base}#resume`}>Resume</a>
+          <a class="hover:text-white" href={`${Astro.base}#contact`}>Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10" href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative mx-auto max-w-6xl px-4 py-12">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
+        <p>© {new Date().getFullYear()} {profile.name}. Built for Data Engineering roles.</p>
+        <p class="text-white/50">Fast, static, and GitHub Pages friendly.</p>
+      </div>
+    </footer>
+  </body>
+</html>

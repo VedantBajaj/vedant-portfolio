@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/Badge.astro';
+import { getCollection, getEntryBySlug } from 'astro:content';
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing slug');
+
+const entry = await getEntryBySlug('caseStudies', slug);
+if (!entry) return Astro.redirect(Astro.base);
+
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={`${entry.data.title} — Case Study`}>
+  <a href={`${Astro.base}#case-studies`} class="text-sm text-white/60 hover:text-white/80">← Back</a>
+
+  <article class="mt-6 rounded-3xl border border-white/10 bg-white/5 p-7">
+    <p class="text-xs uppercase tracking-widest text-white/50">{entry.data.status} · {entry.data.date}</p>
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight">{entry.data.title}</h1>
+    <p class="mt-2 text-white/70">{entry.data.role}</p>
+
+    <div class="mt-5 flex flex-wrap gap-2">
+      {entry.data.stack.map((t) => <Badge text={t} />)}
+    </div>
+
+    {entry.data.highlights && (
+      <ul class="mt-6 list-disc space-y-2 pl-5 text-sm text-white/70">
+        {entry.data.highlights.map((h) => <li>{h}</li>)}
+      </ul>
+    )}
+
+    <div class="prose prose-invert mt-8 max-w-none prose-headings:tracking-tight prose-a:text-white">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
