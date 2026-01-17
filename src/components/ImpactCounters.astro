@@ -1,0 +1,35 @@
+---
+const counters = [
+  { label: "Pipeline / Reporting Improvements", value: 3 },
+  { label: "Areas of Ownership", value: 4 },
+  { label: "Shipped Systems", value: 5 },
+];
+---
+<div class="mt-6 grid gap-4 md:grid-cols-3">
+  {counters.map((c) => (
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+      <div class="num text-3xl font-semibold" data-target={c.value}>0</div>
+      <div class="mt-2 text-sm text-white/70">{c.label}</div>
+    </div>
+  ))}
+</div>
+
+<script is:inline>
+  const els = document.querySelectorAll(".num");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = Number(el.dataset.target || 0);
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target / 20));
+      const timer = setInterval(() => {
+        cur = Math.min(target, cur + step);
+        el.textContent = String(cur);
+        if (cur >= target) clearInterval(timer);
+      }, 30);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.35 });
+  els.forEach(el => io.observe(el));
+</script>

@@ -1,8 +1,11 @@
 ---
 import '../styles/global.css';
+import ScrollProgress from "../components/ScrollProgress.astro";
 import { profile } from '../data/profile';
+import SiteBackground from "../components/SiteBackground.astro";
 const { title, description } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const hideFooter = Astro.url.pathname.includes("/case-studies/");
 ---
 <!doctype html>
 <html lang="en">
@@ -12,6 +15,9 @@ const base = import.meta.env.BASE_URL;
     <meta name="description" content={description ?? profile.summary} />
     <title>{title ?? `${profile.name} — ${profile.title}`}</title>
   </head>
+  <body class="min-h-screen">
+  <SiteBackground />
+  <ScrollProgress />
   <body class="min-h-screen">
     <div class="pointer-events-none fixed inset-0 opacity-60">
       <div class="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl"></div>
@@ -42,11 +48,13 @@ const base = import.meta.env.BASE_URL;
       <slot />
     </main>
 
-    <footer class="border-t border-white/10">
-      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
-        <p>© {new Date().getFullYear()} {profile.name}. Built for Data Engineering roles.</p>
-        <p class="text-white/50">Fast, static, and GitHub Pages friendly.</p>
-      </div>
-    </footer>
+    {!hideFooter && (
+  <footer class="border-t border-white/10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
+      <p>© {new Date().getFullYear()} {profile.name}. Built for Data Engineering roles.</p>
+      <p class="text-white/50">Fast, static, and GitHub Pages friendly.</p>
+    </div>
+  </footer>
+)}
   </body>
 </html>

@@ -1,0 +1,15 @@
+<div id="scrollbar" class="fixed left-0 top-0 z-[60] h-[2px] w-0 bg-white/70"></div>
+
+<script is:inline>
+  const bar = document.getElementById("scrollbar");
+  const update = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    bar.style.width = pct + "%";
+  };
+  addEventListener("scroll", update, { passive: true });
+  addEventListener("resize", update);
+  update();
+</script>
+    

@@ -2,205 +2,241 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import Badge from '../components/Badge.astro';
+import Reveal from '../components/Reveal.astro';
+import ProjectFilter from '../components/ProjectFilter.astro';
+import ImpactCounters from '../components/ImpactCounters.astro';
+import HeroBackground from '../components/HeroBackground.astro';
+
 import { profile } from '../data/profile';
 import { getCollection } from 'astro:content';
 
+const base = import.meta.env.BASE_URL;
 
 const caseStudies = await getCollection('case-studies');
-caseStudies.sort((a,b) => (a.data.date < b.data.date ? 1 : -1));
-const base = import.meta.env.BASE_URL;
+caseStudies.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 ---
 
 <BaseLayout>
   <!-- HERO -->
-  <section class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft">
-    <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-      <div class="max-w-3xl">
-        <p class="text-xs uppercase tracking-widest text-white/50">Data Engineering Portfolio</p>
-        <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
-          {profile.title}
-        </h1>
-        <p class="mt-4 text-lg text-white/75">{profile.summary}</p>
+  <section class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft md:p-12">
+    <div class="relative z-10">
 
-        <div class="mt-6 flex flex-wrap gap-2">
-          {profile.highlights.map((h) => <Badge text={`${h.label}`} />)}
+      <div class="mt-8 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="max-w-3xl">
+          <p class="text-xs uppercase tracking-widest text-white/50">Data Engineering Portfolio</p>
+
+          <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+            {profile.title}
+          </h1>
+
+          <p class="mt-4 text-lg text-white/75">{profile.summary}</p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            {profile.highlights.map((h) => <Badge text={h.label} />)}
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href={`${base}#case-studies`}
+              class="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90"
+            >
+              View Case Studies
+            </a>
+
+            <a
+              href={`${base}toolkit/`}
+              class="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+            >
+              DE Toolkit
+            </a>
+
+            <a
+              href={`${base}${profile.resumePath}`}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+            >
+              Resume (PDF)
+            </a>
+
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+            >
+              GitHub
+            </a>
+          </div>
+
+          <p class="mt-6 text-sm text-white/55">{profile.location} · {profile.email}</p>
         </div>
 
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#case-studies" class="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90">View Case Studies</a>
-          <a href={`${base}toolkit/`} class="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">DE Toolkit</a>
-          <a href={profile.resumePath} class="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">Download Resume</a>
-          <a href={profile.github} target="_blank" rel="noreferrer" class="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">GitHub</a>
-        </div>
-
-        <p class="mt-6 text-sm text-white/55">{profile.location} · {profile.email}</p>
-      </div>
-
-      <div class="w-full max-w-md rounded-2xl border border-white/10 bg-black/30 p-5">
-        <p class="text-sm font-semibold">Recruiter quick scan</p>
-        <ul class="mt-3 space-y-2 text-sm text-white/70">
-          <li>✅ Cloud: GCP, BigQuery, Dataflow</li>
-          <li>✅ Orchestration: Airflow DAGs, retries, backfills</li>
-          <li>✅ Data: Python + SQL for transformations</li>
-          <li>✅ Focus: Quality, reproducibility, scalability</li>
-        </ul>
-        <div class="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-xs text-white/70">
-          Tip: Open a case study for proof of work, or skim the DE Toolkit for patterns (incremental loads, backfills, quality checks).
+        <div class="w-full max-w-md rounded-2xl border border-white/10 bg-black/30 p-5">
+          <p class="text-sm font-semibold">Recruiter quick scan</p>
+          <ul class="mt-3 space-y-2 text-sm text-white/70">
+            <li>✅ Cloud: GCP, BigQuery, Dataflow</li>
+            <li>✅ Orchestration: Airflow DAGs, retries, backfills</li>
+            <li>✅ Data: Python + SQL for transformations</li>
+            <li>✅ Focus: Quality, reproducibility, scalability</li>
+          </ul>
+          <div class="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-xs text-white/70">
+            Tip: Open a case study for proof of work, or skim the DE Toolkit for patterns (incremental loads, backfills, quality checks).
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CASE STUDIES -->
-  <section id="case-studies" class="mt-14">
-    <SectionTitle
-      kicker="Proof of work"
-      title="Case Studies"
-      desc="Short, impact-first writeups that show how I design pipelines, handle quality, and think about operations."
-    />
+  <Reveal class="mt-14">
+    <section id="case-studies">
+      <SectionTitle
+        kicker="Proof of work"
+        title="Case Studies"
+        desc="Short, impact-first writeups that show how I design pipelines, handle quality, and think about operations."
+      />
 
-    <div class="grid gap-4 md:grid-cols-3">
-      {caseStudies.map((cs) => (
-        <a
-          href={`${base}case-studies/${cs.slug}/`}
-          class="group rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10"
-        >
-          <p class="text-xs uppercase tracking-widest text-white/50">{cs.data.status} · {cs.data.date}</p>
-          <h3 class="mt-2 text-lg font-semibold">{cs.data.title}</h3>
-          <p class="mt-2 text-sm text-white/70">{cs.data.role}</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            {cs.data.stack.slice(0, 5).map((t) => (
-              <span class="rounded-full border border-white/10 bg-black/30 px-2 py-1 text-xs text-white/70">{t}</span>
-            ))}
-          </div>
-          <p class="mt-5 text-sm text-white/60 group-hover:text-white/80">Open →</p>
-        </a>
-      ))}
-    </div>
-  </section>
+      <div class="grid gap-4 md:grid-cols-3">
+        {caseStudies.map((cs) => (
+          <a
+            href={`${base}case-studies/${cs.slug}/`}
+            class="group rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10"
+          >
+            <p class="text-xs uppercase tracking-widest text-white/50">
+              {cs.data.status} · {cs.data.date}
+            </p>
+            <h3 class="mt-2 text-lg font-semibold">{cs.data.title}</h3>
+            <p class="mt-2 text-sm text-white/70">{cs.data.role}</p>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              {cs.data.stack?.slice(0, 5).map((t) => (
+                <span class="rounded-full border border-white/10 bg-black/30 px-2 py-1 text-xs text-white/70">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <p class="mt-5 text-sm text-white/60 group-hover:text-white/80">Open →</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </Reveal>
 
   <!-- EXPERIENCE -->
-  <section class="mt-14">
-    <SectionTitle
-      kicker="What I've shipped"
-      title="Experience"
-      desc="Impact-first bullets, optimized for recruiter + hiring manager scan."
-    />
+  <Reveal class="mt-16">
+    <section id="experience">
+      <SectionTitle
+        kicker="What I've shipped"
+        title="Experience"
+        desc="Impact-first bullets, optimized for recruiter + hiring manager scan."
+      />
 
-    <div class="space-y-4">
-      {profile.experience.map((e) => (
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-          <div class="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
-            <div>
-              <p class="text-lg font-semibold">{e.role}</p>
-              <p class="text-white/70">{e.company}</p>
+      <div class="space-y-4">
+        {profile.experience.map((e) => (
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+              <div>
+                <p class="text-lg font-semibold">{e.role}</p>
+                <p class="text-white/70">{e.company}</p>
+              </div>
+              <p class="text-sm text-white/50">{e.dates}</p>
             </div>
-            <p class="text-sm text-white/50">{e.dates}</p>
+            <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+              {e.bullets.map((b) => <li>{b}</li>)}
+            </ul>
           </div>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
-            {e.bullets.map((b) => <li>{b}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
+        ))}
+      </div>
+    </section>
+  </Reveal>
 
   <!-- PROJECTS -->
-  <section id="projects" class="mt-14">
-    <SectionTitle
-      kicker="Selected"
-      title="Projects"
-      desc="Curated projects that demonstrate engineering depth (not just demos)."
-    />
-
-    <div class="grid gap-4 md:grid-cols-2">
-      {profile.projects.map((p) => (
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-semibold">{p.name}</h3>
-              <div class="mt-3 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span class="rounded-full border border-white/10 bg-black/30 px-2 py-1 text-xs text-white/70">{t}</span>
-                ))}
-              </div>
-            </div>
-            {p.link && (
-              <a href={p.link} target="_blank" rel="noreferrer" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10">
-                Live
-              </a>
-            )}
-          </div>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
-            {p.bullets.map((b) => <li>{b}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
+  <Reveal class="mt-16">
+    <section id="projects">
+      <h2 class="text-2xl font-semibold">Projects</h2>
+      <p class="mt-2 text-white/70">Hands-on work in pipelines, data quality, and extraction workflows.</p>
+      <ProjectFilter projects={profile.projects} />
+    </section>
+  </Reveal>
 
   <!-- SKILLS -->
-  <section id="skills" class="mt-14">
-    <SectionTitle
-      kicker="Toolkit"
-      title="Skills"
-      desc="The stack I use to build reliable, scalable data systems."
-    />
+  <Reveal class="mt-16">
+    <section id="skills">
+      <SectionTitle
+        kicker="Toolkit"
+        title="Skills"
+        desc="The stack I use to build reliable, scalable data systems."
+      />
 
-    <div class="grid gap-4 md:grid-cols-2">
-      {Object.entries(profile.skills).map(([k, items]) => (
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-          <p class="text-sm font-semibold">{k}</p>
-          <div class="mt-3 flex flex-wrap gap-2">
-            {items.map((t) => <Badge text={t} />)}
+      <div class="grid gap-4 md:grid-cols-2">
+        {Object.entries(profile.skills).map(([k, items]) => (
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p class="text-sm font-semibold">{k}</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {items.map((t) => <Badge text={t} />)}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  
+        ))}
+      </div>
+    </section>
+  </Reveal>
 
   <!-- RESUME -->
-  <section id="resume" class="mt-14">
-    <SectionTitle
-      kicker="One page"
-      title="Resume"
-      desc="Keep the website as the story; use the resume as the quick artifact."
-    />
+  <Reveal class="mt-16">
+    <section id="resume">
+      <SectionTitle
+        kicker="One page"
+        title="Resume"
+        desc="Keep the website as the story; use the resume as the quick artifact."
+      />
 
-    <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <p class="text-sm text-white/70">PDF: {profile.resumePath}</p>
-        <a href={profile.resumePath} class="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90">Download</a>
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <p class="text-sm text-white/70">PDF: {profile.resumePath}</p>
+          <a
+            href={`${base}${profile.resumePath}`}
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90"
+          >
+            Open PDF
+          </a>
+        </div>
+
+        <div class="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+          <iframe class="h-[720px] w-full" src={`${base}${profile.resumePath}`}></iframe>
+        </div>
       </div>
-      <div class="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
-        <iframe class="h-[720px] w-full" src={profile.resumePath}></iframe>
-      </div>
-    </div>
-  </section>
+    </section>
+  </Reveal>
 
   <!-- CONTACT -->
-  <section id="contact" class="mt-14">
-    <SectionTitle
-      kicker="Let's talk"
-      title="Contact"
-      desc="I’m open to Data Engineering internships / new-grad roles (May 2026)."
-    />
+  <Reveal class="mt-16">
+    <section id="contact">
+      <SectionTitle
+        kicker="Let's talk"
+        title="Contact"
+        desc="I’m open to Data Engineering internships / new-grad roles (May 2026)."
+      />
 
-    <div class="grid gap-4 md:grid-cols-3">
-      <a class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10" href={`mailto:${profile.email}`}>
-        <p class="text-sm font-semibold">Email</p>
-        <p class="mt-2 text-sm text-white/70">{profile.email}</p>
-      </a>
-      <a class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10" href={profile.linkedin} target="_blank" rel="noreferrer">
-        <p class="text-sm font-semibold">LinkedIn</p>
-        <p class="mt-2 text-sm text-white/70">/in/vedant-bajaj99</p>
-      </a>
-      <a class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10" href={profile.github} target="_blank" rel="noreferrer">
-        <p class="text-sm font-semibold">GitHub</p>
-        <p class="mt-2 text-sm text-white/70">VedantBajaj</p>
-      </a>
-    </div>
-  </section>
+      <div class="grid gap-4 md:grid-cols-3">
+        <a class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10" href={`mailto:${profile.email}`}>
+          <p class="text-sm font-semibold">Email</p>
+          <p class="mt-2 text-sm text-white/70">{profile.email}</p>
+        </a>
+
+        <a class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10" href={profile.linkedin} target="_blank" rel="noreferrer">
+          <p class="text-sm font-semibold">LinkedIn</p>
+          <p class="mt-2 text-sm text-white/70">/in/vedant-bajaj99</p>
+        </a>
+
+        <a class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10" href={profile.github} target="_blank" rel="noreferrer">
+          <p class="text-sm font-semibold">GitHub</p>
+          <p class="mt-2 text-sm text-white/70">VedantBajaj</p>
+        </a>
+      </div>
+    </section>
+  </Reveal>
 </BaseLayout>

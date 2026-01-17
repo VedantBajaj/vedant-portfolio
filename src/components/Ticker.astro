@@ -1,0 +1,40 @@
+---
+const { items = [] } = Astro.props;
+const text = items.length ? items : ["DATA PIPELINES", "SQL", "ETL", "DATA QUALITY", "ANALYTICS", "BACKFILLS", "OBSERVABILITY"];
+const content = text.join(" • ");
+---
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span class="chunk">{content}</span>
+    <span class="chunk">{content}</span>
+    <span class="chunk">{content}</span>
+  </div>
+</div>
+
+<style>
+  .ticker{
+    margin-top: 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.03);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .track{
+    display:flex;
+    gap: 48px;
+    white-space: nowrap;
+    padding: 10px 0;
+    animation: marquee 18s linear infinite;
+    will-change: transform;
+  }
+  .chunk{
+    font-size: 12px;
+    letter-spacing: .18em;
+    color: rgba(255,255,255,.70);
+    padding-left: 16px;
+  }
+  @keyframes marquee{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-33.333%); }
+  }
+</style>

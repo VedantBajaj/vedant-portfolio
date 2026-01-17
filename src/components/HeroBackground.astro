@@ -1,0 +1,151 @@
+<div class="hero-bg" aria-hidden="true">
+  <canvas id="heroCanvas" class="hero-canvas"></canvas>
+  <!-- subtle overlay to guarantee readability -->
+  <div class="hero-overlay"></div>
+</div>
+
+<style>
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    pointer-events: none; /* important: background never blocks clicks */
+  }
+
+  .hero-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0.95; /* make it visible */
+  }
+
+  /* This helps hero text stay readable on top of the canvas */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 400px at 20% 20%, rgba(255,255,255,0.12), transparent 60%),
+      radial-gradient(800px 420px at 80% 35%, rgba(255,255,255,0.08), transparent 65%),
+      linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.45));
+    mix-blend-mode: normal;
+  }
+</style>
+
+<script is:inline>
+  const canvas = document.getElementById("heroCanvas");
+  const ctx = canvas.getContext("2d");
+
+  let w = 0, h = 0, dpr = 1;
+  let mouse = { x: 0, y: 0, active: false };
+
+  function resize() {
+    dpr = Math.max(1, window.devicePixelRatio || 1);
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  // particle field
+  const N = 90;
+  const pts = Array.from({ length: N }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    vx: (Math.random() - 0.5) * 0.25,
+    vy: (Math.random() - 0.5) * 0.25,
+    r: 1.2 + Math.random() * 1.8,
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    // subtle “glow” background
+    const glow = ctx.createRadialGradient(w * 0.55, h * 0.2, 40, w * 0.55, h * 0.2, Math.max(w, h));
+    glow.addColorStop(0, "rgba(255,255,255,0.10)");
+    glow.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, w, h);
+
+    // update particles
+    for (const p of pts) {
+      // mouse influence (gentle attraction)
+      if (mouse.active) {
+        const px = p.x * w;
+        const py = p.y * h;
+        const dx = mouse.x - px;
+        const dy = mouse.y - py;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const pull = Math.max(0, 180 - dist) / 180; // within 180px
+        p.vx += (dx / dist) * pull * 0.0009;
+        p.vy += (dy / dist) * pull * 0.0009;
+      }
+
+      // move
+      p.x += p.vx / 60;
+      p.y += p.vy / 60;
+
+      // wrap
+      if (p.x < 0) p.x = 1;
+      if (p.x > 1) p.x = 0;
+      if (p.y < 0) p.y = 1;
+      if (p.y > 1) p.y = 0;
+
+      // damp
+      p.vx *= 0.985;
+      p.vy *= 0.985;
+    }
+
+    // draw connections + points
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i];
+      const ax = a.x * w;
+      const ay = a.y * h;
+
+      // point
+      ctx.beginPath();
+      ctx.arc(ax, ay, a.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,0.65)";
+      ctx.fill();
+
+      // lines
+      for (let j = i + 1; j < pts.length; j++) {
+        const b = pts[j];
+        const bx = b.x * w;
+        const by = b.y * h;
+        const dx = bx - ax;
+        const dy = by - ay;
+        const dd = dx * dx + dy * dy;
+
+        const max = 120 * 120;
+        if (dd < max) {
+          const alpha = 0.18 * (1 - dd / max);
+          ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+          ctx.beginPath();
+          ctx.moveTo(ax, ay);
+          ctx.lineTo(bx, by);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  function onMove(e) {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+    mouse.active = true;
+  }
+  function onLeave() { mouse.active = false; }
+
+  window.addEventListener("resize", resize);
+  // attach to window so it still reacts even if canvas is pointer-events none
+  window.addEventListener("mousemove", onMove);
+  window.addEventListener("mouseleave", onLeave);
+
+  resize();
+  draw();
+</script>
