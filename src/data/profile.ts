@@ -25,7 +25,7 @@ export const profile = {
     {
   role: 'Data Engineering Intern',
   company: 'Conifer Health Solutions',
-  dates: '2024 – Present',
+  dates: '2025 – Present',
   bullets: [
     'Built and maintained batch data pipelines that power healthcare analytics and reporting workflows.',
     'Optimized SQL stored procedures and complex queries to reduce execution time and improve report performance.',
