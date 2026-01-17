@@ -23,7 +23,7 @@ const base = import.meta.env.BASE_URL;
         <p class="mt-4 text-lg text-white/75">{profile.summary}</p>
 
         <div class="mt-6 flex flex-wrap gap-2">
-          {profile.highlights.map((h) => <Badge text={`${h.label}: ${h.detail}`} />)}
+          {profile.highlights.map((h) => <Badge text={`${h.label}`} />)}
         </div>
 
         <div class="mt-8 flex flex-wrap gap-3">

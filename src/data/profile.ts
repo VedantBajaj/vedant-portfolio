@@ -8,11 +8,11 @@ export const profile = {
   github: 'https://github.com/VedantBajaj',
   resumePath: 'Vedant_Bajaj_Data_Resume.pdf',
   summary:
-  "Data Engineering graduate student with experience building and maintaining batch data pipelines for analytics. I focus on data correctness, performance, and making pipelines easy to operate and debug.",
-  highlights: [
-  "Built and supported batch data pipelines for healthcare analytics and reporting.",
-  "Optimized SQL stored procedures and transformations to improve performance and reliability.",
-  "Handled data validation, ad-hoc fixes, and production data issues end-to-end.",
+  'I turn chaotic data into calm, trustworthy tables. I build data pipelines, optimize slow SQL, and fix broken reports—so dashboards stop lying and people stop panicking.',
+  highlights: [{
+  'label':['Built and supported batch data pipelines for healthcare analytics and reporting.']},
+  {'label':['Optimized SQL stored procedures to improve performance and reliability.']},
+  {'label':['Handled data validation, ad-hoc fixes, and production data issues end-to-end.']}
 ],
   skills: {
     'Data Engineering & Cloud': ['Python', 'SQL', 'GCP', 'BigQuery', 'Apache Airflow', 'Dataflow', 'ETL Pipelines'],
@@ -23,35 +23,35 @@ export const profile = {
   },
   experience: [
     {
-  role: "Data Engineering Intern",
-  company: "Conifer Health Solutions",
-  dates: "2024 – Present",
+  role: 'Data Engineering Intern',
+  company: 'Conifer Health Solutions',
+  dates: '2024 – Present',
   bullets: [
-    "Built and maintained batch data pipelines that power healthcare analytics and reporting workflows.",
-    "Optimized SQL stored procedures and complex queries to reduce execution time and improve report performance.",
-    "Performed data validation checks such as row counts, null checks, and schema consistency to ensure data accuracy.",
-    "Investigated and resolved ad-hoc data issues reported by analytics and business teams.",
-    "Refactored SQL and transformation logic to make pipelines safer to re-run and easier to debug.",
-    "Worked closely with stakeholders to understand reporting requirements and deliver reliable, analytics-ready datasets.",
+    'Built and maintained batch data pipelines that power healthcare analytics and reporting workflows.',
+    'Optimized SQL stored procedures and complex queries to reduce execution time and improve report performance.',
+    'Performed data validation checks such as row counts, null checks, and schema consistency to ensure data accuracy.',
+    'Investigated and resolved ad-hoc data issues reported by analytics and business teams.',
+    'Refactored SQL and transformation logic to make pipelines safer to re-run and easier to debug.',
+    'Worked closely with stakeholders to understand reporting requirements and deliver reliable, analytics-ready datasets.',
   ]},
     {
-  role: "Software Engineer",
-  company: "Rabbit & Tortoise Technology Solutions",
-  dates: "2022 – 2023",
+  role: 'Software Engineer',
+  company: 'Rabbit & Tortoise Technology Solutions',
+  dates: '2022 – 2023',
   bullets: [
-    "Built a document data extraction pipeline using OCR to convert unstructured files into structured text.",
-    "Improved extraction accuracy through image preprocessing and validation checks.",
-    "Designed the pipeline in modular stages to support reprocessing and future extensions.",
-    "Delivered the solution as a web-based workflow for easier use by non-technical users.",
+    'Built a document data extraction pipeline using OCR to convert unstructured files into structured text.',
+    'Improved extraction accuracy through image preprocessing and validation checks.',
+    'Designed the pipeline in modular stages to support reprocessing and future extensions.',
+    'Delivered the solution as a web-based workflow for easier use by non-technical users.',
   ]},
     {
-  role: "Software Engineer Intern",
-  company: "Bizsol IT Services",
-  dates: "2021",
+  role: 'Software Engineer Intern',
+  company: 'Bizsol IT Services',
+  dates: '2021',
   bullets: [
-    "Built SQL-based workflows for reconciliation and reporting across enterprise datasets.",
-    "Optimized slow queries using indexing and query refactoring to improve performance.",
-    "Supported analytics teams by delivering cleaner and more reliable reporting tables.",
+    'Built SQL-based workflows for reconciliation and reporting across enterprise datasets.',
+    'Optimized slow queries using indexing and query refactoring to improve performance.',
+    'Supported analytics teams by delivering cleaner and more reliable reporting tables.',
   ]}
   ],
   projects: [
