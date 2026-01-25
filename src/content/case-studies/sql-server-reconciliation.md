@@ -17,14 +17,15 @@ highlights:
 **What shipped:** SQL Server integration + reconciliation layer feeding reporting tables + dashboards.
 
 ## **Architecture**
-```mermaid
-flowchart LR
+<div class="mermaid">
+  flowchart LR
   S1[Source A] --> STG[(Staging Tables)]
   S2[Source B] --> STG
   STG -->|Standardize| INT[(Integration Layer)]
   INT -->|Reconcile| RPT[(Reporting Tables)]
   RPT --> BI[Dashboards]
-```
+</div>
+
 
 ## **Reliability patterns**
 - Repeatable runs (same inputs → same outputs)

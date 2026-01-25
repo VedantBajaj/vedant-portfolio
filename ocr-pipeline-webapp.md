@@ -15,14 +15,19 @@ highlights:
 **What shipped:** a deployed OCR web app + a modular pipeline where preprocessing is swappable and measurable.
 
 ## Pipeline
-```mermaid
-flowchart LR
+<div class="mermaid">
+  flowchart LR
   U[User Uploads PDF] --> P[Split pages / render images]
   P --> PRE[Preprocess: denoise, threshold, morphology]
   PRE --> OCR[Text extraction (Tesseract)]
   OCR --> VAL[Validation + cleanup]
   VAL --> OUT[Return extracted text + download]
-```
+</div>
+
+<!-- <script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script> -->
 
 ## **What I did**
 - Implemented preprocessing stages (denoise/threshold/morphology) to improve extraction consistency.

@@ -18,18 +18,17 @@ highlights:
 **What shipped:** automated batch pipelines landing in **BigQuery**, with clear raw/curated layers and repeatable runs.
 
 ## Architecture
-```mermaid
-flowchart LR
+<div class="mermaid">
+  flowchart LR
   A[On‑prem Sources] -->|Extract| B[Landing / Staging]
   B --> C[Airflow DAGs]
   C -->|Trigger| D[Dataflow Jobs]
   D --> E[BigQuery Raw]
   E --> F[BigQuery Curated]
   F --> G[Analytics / Dashboards]
-
   C --> H[(Logs/Alerts)]
   D --> H
-```
+</div>
 
 ## **What I did**
 - **Orchestration:** built/maintained **Airflow DAGs** with retries, SLAs, and backfill support.

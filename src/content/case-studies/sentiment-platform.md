@@ -21,15 +21,15 @@ Process streaming text data and compute sentiment in real time so trends, spikes
 A fully containerized, end-to-end streaming data platform with ingestion, processing, storage, and live dashboards.
 
 ## **Architecture**
-
-```mermaid
-flowchart LR
+<div class="mermaid">
+  flowchart LR
   P[Producer emits text events] --> K[Kafka topic]
   K --> S[Spark streaming job]
   S --> A[Sentiment scoring + aggregation]
   A --> DB[(PostgreSQL)]
   DB --> G[Grafana dashboards]
-```
+</div>
+
 
 ## **What I did**
 - Built a Kafka-based ingestion layer to handle continuous streams of text events.
