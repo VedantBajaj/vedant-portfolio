@@ -16,7 +16,7 @@ highlights:
 
 **What shipped:** SQL Server integration + reconciliation layer feeding reporting tables + dashboards.
 
-## Architecture (simplified)
+## **Architecture**
 ```mermaid
 flowchart LR
   S1[Source A] --> STG[(Staging Tables)]
@@ -26,11 +26,11 @@ flowchart LR
   RPT --> BI[Dashboards]
 ```
 
-## Reliability patterns
+## **Reliability patterns**
 - Repeatable runs (same inputs → same outputs)
 - Controlled updates to reporting tables
 - Monitoring key reconciliation metrics
 
-## Outcome
+## **Outcome**
 - Manual reconciliation time reduced by **60%**
 - Query performance improved by **40%**

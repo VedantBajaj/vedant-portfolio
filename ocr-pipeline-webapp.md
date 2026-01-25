@@ -1,7 +1,7 @@
 ---
 title: "Document OCR Pipeline + WebApp"
 date: "2025-01"
-role: "Personal Project / Coursework"
+role: "Personal Project"
 status: "Public"
 stack: ["Python", "OpenCV", "PyTesseract", "Django/Backend APIs", "Deployment"]
 highlights:
@@ -24,12 +24,12 @@ flowchart LR
   VAL --> OUT[Return extracted text + download]
 ```
 
-## What I did
+## **What I did**
 - Implemented preprocessing stages (denoise/threshold/morphology) to improve extraction consistency.
 - Built a **modular pipeline** so new preprocessing strategies can be A/B tested without rewriting the app.
 - Added post-processing (cleanup/validation) to reduce garbage output.
 
-## Production touches
+## **Production touches**
 - Clear boundaries: upload → process → results (simple to operate).
 - Defensive limits (file size/timeouts) so a single bad doc doesn’t take down the service.
 - Logging for “which page failed and why” (useful when improving preprocessing).

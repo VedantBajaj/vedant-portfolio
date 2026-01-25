@@ -143,9 +143,22 @@ caseStudies.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
               </div>
               <p class="text-sm text-white/50">{e.dates}</p>
             </div>
-            <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
-              {e.bullets.map((b) => <li>{b}</li>)}
-            </ul>
+            <div class="mt-4 space-y-4 text-sm text-white/70">
+  {e.bullets.map((b) => (
+    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+      <p>
+        <strong>Problem addressed:</strong> {b.problem}
+      </p>
+      <p class="mt-1">
+        <strong>Technology used:</strong> {b.tech}
+      </p>
+      <p class="mt-1">
+        <strong>Impact:</strong> {b.impact}
+      </p>
+    </div>
+  ))}
+</div>
+
           </div>
         ))}
       </div>
@@ -218,7 +231,7 @@ caseStudies.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
       <SectionTitle
         kicker="Let's talk"
         title="Contact"
-        desc="I’m open to Data Engineering internships / new-grad roles (May 2026)."
+        desc="I’m open to Data Engineering roles (May 2026)."
       />
 
       <div class="grid gap-4 md:grid-cols-3">
