@@ -1,10 +1,20 @@
-# Vedant Bajaj — Data Engineering Portfolio
+# Vedant Bajaj - Data Engineering Portfolio
 
-🚀 Live Portfolio:  
-👉 https://vedantbajaj.github.io/vedant-portfolio/
+Single-file portfolio for data engineering roles.
 
-🔗 LinkedIn:  
-👉 https://www.linkedin.com/in/vedant-bajaj99/
+## Files
 
-📄 Resume:  
-👉 https://vedantbajaj.github.io/vedant-portfolio/Vedant_Bajaj_Data_Resume.pdf
+- `index.html` - complete website with inline CSS and JavaScript
+- `Vedant_Bajaj_DataEngineering_Resume.docx` - resume linked by the Download Resume button
+
+## GitHub Pages
+
+No build step is required.
+
+Use GitHub Pages with:
+
+- Source: Deploy from a branch
+- Branch: `main`
+- Folder: `/ (root)`
+
+The site will load from `index.html`.

@@ -1,0 +1,1340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Vedant Bajaj is a Data Engineer in Dallas, TX designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains." />
+  <meta name="theme-color" content="#f7fbff" />
+  <meta property="og:title" content="Vedant Bajaj | Data Engineer in Dallas, TX" />
+  <meta property="og:description" content="Data engineering portfolio for Vedant Bajaj: scalable ETL/ELT pipelines, GCP, BigQuery, Airflow, dbt, Kafka, Spark, PostgreSQL, TimescaleDB, and data quality frameworks." />
+  <meta property="og:type" content="website" />
+  <title>Vedant Bajaj | Data Engineer in Dallas, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --page: #f7fbff;
+      --surface: #ffffff;
+      --ink: #10202f;
+      --muted: #637384;
+      --line: #dce7f0;
+      --navy: #153a5b;
+      --blue: #2f80ed;
+      --emerald: #10a37f;
+      --aqua: #d8fbf1;
+      --gold: #fbba3c;
+      --violet: #7c5cff;
+      --rose: #ef5b70;
+      --shadow: 0 24px 70px rgba(21, 58, 91, 0.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(16, 163, 127, 0.07) 1px, transparent 1px),
+        linear-gradient(rgba(47, 128, 237, 0.06) 1px, transparent 1px),
+        var(--page);
+      background-size: 44px 44px;
+      line-height: 1.55;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: -8rem;
+      z-index: 200;
+      border-radius: 0.75rem;
+      background: var(--ink);
+      color: white;
+      padding: 0.8rem 1rem;
+      font-weight: 800;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(220, 231, 240, 0.9);
+      background: rgba(247, 251, 255, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-shell {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.35rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 900;
+    }
+
+    .brand-badge {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: grid;
+      place-items: center;
+      border-radius: 0.9rem;
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 10px 24px rgba(16, 32, 47, 0.16);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #405266;
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      border-radius: 0.75rem;
+      padding: 0.58rem 0.78rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: white;
+      color: var(--navy);
+      box-shadow: 0 8px 24px rgba(21, 58, 91, 0.08);
+    }
+
+    .nav-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--ink);
+      border-radius: 0.85rem;
+      background: var(--ink);
+      color: white;
+      padding: 0.64rem 0.95rem;
+      font-weight: 800;
+    }
+
+    .menu-button {
+      display: none;
+      width: 2.7rem;
+      height: 2.7rem;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 0.85rem;
+      background: white;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .menu-button span,
+    .menu-button span::before,
+    .menu-button span::after {
+      width: 1.15rem;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .menu-button span {
+      position: relative;
+    }
+
+    .menu-button span::before,
+    .menu-button span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-button span::before {
+      transform: translateY(-6px);
+    }
+
+    .menu-button span::after {
+      transform: translateY(6px);
+    }
+
+    .menu-open .menu-button span {
+      background: transparent;
+    }
+
+    .menu-open .menu-button span::before {
+      transform: rotate(45deg);
+    }
+
+    .menu-open .menu-button span::after {
+      transform: rotate(-45deg);
+    }
+
+    main {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    section {
+      scroll-margin-top: 5.4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 2rem;
+      align-items: center;
+      min-height: 620px;
+      padding: 3.5rem 0 4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 1.25rem;
+      border: 1px solid rgba(16, 163, 127, 0.24);
+      border-radius: 999px;
+      background: rgba(16, 163, 127, 0.1);
+      color: #08775f;
+      padding: 0.42rem 0.72rem;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 11ch;
+      margin-bottom: 1rem;
+      color: var(--ink);
+      font-size: clamp(3.6rem, 8vw, 7.4rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-tagline {
+      max-width: 680px;
+      margin-bottom: 1.25rem;
+      color: var(--navy);
+      font-size: clamp(1.35rem, 2.6vw, 2.15rem);
+      line-height: 1.15;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-summary {
+      max-width: 660px;
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 3.1rem;
+      border-radius: 0.9rem;
+      padding: 0.82rem 1.05rem;
+      font-size: 0.96rem;
+      font-weight: 900;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .button:hover,
+    .button:focus {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 16px 34px rgba(16, 32, 47, 0.18);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+    }
+
+    .hero-visual {
+      position: relative;
+      border: 1px solid rgba(21, 58, 91, 0.12);
+      border-radius: 1.6rem;
+      background:
+        linear-gradient(135deg, rgba(16, 163, 127, 0.12), rgba(47, 128, 237, 0.1)),
+        white;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: -40% -30% auto auto;
+      width: 22rem;
+      height: 22rem;
+      border-radius: 50%;
+      background: rgba(47, 128, 237, 0.15);
+    }
+
+    .pipeline-board {
+      position: relative;
+      display: grid;
+      gap: 0.85rem;
+      border-radius: 1.1rem;
+      background: rgba(255, 255, 255, 0.72);
+      padding: 1rem;
+    }
+
+    .pipeline-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.75rem;
+    }
+
+    .pipeline-title {
+      margin: 0;
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    .status-chip {
+      border-radius: 999px;
+      background: var(--aqua);
+      color: #08775f;
+      padding: 0.35rem 0.55rem;
+      font-size: 0.76rem;
+      font-weight: 900;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.7rem;
+    }
+
+    .flow-step {
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: white;
+      padding: 0.85rem;
+      min-height: 8.2rem;
+      box-shadow: 0 12px 28px rgba(21, 58, 91, 0.08);
+    }
+
+    .step-icon {
+      width: 2.1rem;
+      height: 2.1rem;
+      display: grid;
+      place-items: center;
+      border-radius: 0.75rem;
+      margin-bottom: 0.8rem;
+      color: white;
+      font-weight: 900;
+    }
+
+    .step-icon.extract {
+      background: var(--blue);
+    }
+
+    .step-icon.model {
+      background: var(--emerald);
+    }
+
+    .step-icon.validate {
+      background: var(--gold);
+      color: #3b2a00;
+    }
+
+    .step-icon.serve {
+      background: var(--violet);
+    }
+
+    .flow-step strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--ink);
+      font-size: 0.94rem;
+    }
+
+    .flow-step span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.7rem;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: #fbfdff;
+      padding: 0.85rem;
+    }
+
+    .metric b {
+      display: block;
+      color: var(--ink);
+      font-size: 1.28rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section-block {
+      padding: 4.8rem 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 1.5rem;
+    }
+
+    .kicker {
+      margin-bottom: 0.7rem;
+      color: var(--emerald);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      color: var(--ink);
+      font-size: clamp(2rem, 4vw, 3.45rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .surface {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 18px 44px rgba(21, 58, 91, 0.07);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1rem;
+    }
+
+    .about-copy {
+      padding: 1.4rem;
+      color: #33485c;
+      font-size: 1.04rem;
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quick-list {
+      margin: 0;
+      padding: 1.4rem;
+      list-style: none;
+    }
+
+    .quick-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      color: #33485c;
+    }
+
+    .quick-list li + li {
+      margin-top: 1rem;
+    }
+
+    .quick-list li::before {
+      content: "";
+      width: 0.7rem;
+      height: 0.7rem;
+      margin-top: 0.42rem;
+      border-radius: 0.25rem;
+      background: var(--emerald);
+      transform: rotate(45deg);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .skill-card {
+      padding: 1rem;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 0.85rem;
+      font-size: 1rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.8rem;
+      border-radius: 999px;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.78rem;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .language {
+      background: rgba(124, 92, 255, 0.12);
+      color: #5034bd;
+    }
+
+    .cloud {
+      background: rgba(16, 163, 127, 0.12);
+      color: #08775f;
+    }
+
+    .data {
+      background: rgba(251, 186, 60, 0.18);
+      color: #8a5900;
+    }
+
+    .database {
+      background: rgba(47, 128, 237, 0.12);
+      color: #1e5fb5;
+    }
+
+    .tool {
+      background: rgba(239, 91, 112, 0.12);
+      color: #af3146;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 1.28rem;
+      top: 1rem;
+      bottom: 1rem;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 2.6rem 1fr;
+      gap: 1rem;
+    }
+
+    .timeline-marker {
+      width: 1rem;
+      height: 1rem;
+      margin: 1.35rem auto 0;
+      border: 3px solid white;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.2);
+      z-index: 1;
+    }
+
+    .experience-card {
+      padding: 1.2rem;
+    }
+
+    .role-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .role-top h3 {
+      margin-bottom: 0.2rem;
+      color: var(--ink);
+      font-size: 1.12rem;
+    }
+
+    .role-top p,
+    .role-date {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .experience-card ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: #33485c;
+    }
+
+    .experience-card li + li {
+      margin-top: 0.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      display: grid;
+      gap: 1rem;
+      padding: 1.15rem;
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.25rem;
+      color: var(--ink);
+      font-size: 1.18rem;
+    }
+
+    .project-card p {
+      margin-bottom: 0;
+      color: #33485c;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 0.75rem;
+      background: #f7fbff;
+      padding: 0.58rem 0.75rem;
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    .project-link:hover,
+    .project-link:focus {
+      border-color: rgba(16, 163, 127, 0.35);
+      background: var(--aqua);
+    }
+
+    .education-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .education-card,
+    .contact-card {
+      padding: 1.15rem;
+    }
+
+    .education-card h3,
+    .contact-card h3 {
+      margin-bottom: 0.25rem;
+      color: var(--ink);
+      font-size: 1.04rem;
+    }
+
+    .education-card p,
+    .contact-card p {
+      margin-bottom: 0.25rem;
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.8rem;
+      align-items: center;
+      min-height: 6rem;
+    }
+
+    .icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: grid;
+      place-items: center;
+      border-radius: 0.85rem;
+      background: var(--ink);
+      color: white;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .footer-inner {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal,
+      .button {
+        transition: none;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .hero,
+      .about-layout,
+      .section-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .nav-action {
+        display: none;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 4.8rem;
+        left: 1rem;
+        right: 1rem;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: white;
+        box-shadow: var(--shadow);
+        padding: 0.6rem;
+      }
+
+      .menu-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 0.9rem;
+      }
+
+      .flow-row,
+      .metric-strip,
+      .projects-grid,
+      .education-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .role-top {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-shell,
+      main,
+      .footer-inner {
+        width: min(100% - 1.2rem, 1160px);
+      }
+
+      .brand span:last-child {
+        max-width: 9rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 3rem 0 3.5rem;
+      }
+
+      h1 {
+        font-size: clamp(3.25rem, 18vw, 4.5rem);
+      }
+
+      .cta-row,
+      .project-links {
+        flex-direction: column;
+      }
+
+      .button,
+      .project-link {
+        width: 100%;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 0.78rem;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1.6rem 1fr;
+        gap: 0.7rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Vedant Bajaj home">
+        <span class="brand-badge">VB</span>
+        <span>Vedant Bajaj</span>
+      </a>
+
+      <nav class="nav-links" id="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="nav-action" href="Vedant_Bajaj_DataEngineering_Resume.docx" download>Resume</a>
+      <button class="menu-button" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open navigation menu">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Data Engineer / Dallas, TX</p>
+        <h1 id="hero-title">Vedant Bajaj</h1>
+        <p class="hero-tagline">Production-minded data engineer building pipelines, warehouses, and quality checks that teams can trust.</p>
+        <p class="hero-summary">
+          2+ years of experience designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains.
+        </p>
+        <div class="cta-row">
+          <a class="button button-primary" href="#projects">View Projects</a>
+          <a class="button button-secondary" href="Vedant_Bajaj_DataEngineering_Resume.docx" download>Download Resume</a>
+        </div>
+      </div>
+
+      <aside class="hero-visual reveal" aria-label="Data platform highlights">
+        <div class="pipeline-board">
+          <div class="pipeline-top">
+            <p class="pipeline-title">Healthcare Data Platform</p>
+            <span class="status-chip">Production-style work</span>
+          </div>
+
+          <div class="flow-row" aria-label="Pipeline stages">
+            <div class="flow-step">
+              <div class="step-icon extract">1</div>
+              <strong>Ingest</strong>
+              <span>SFTP, Python, Cloud Run, Workflows</span>
+            </div>
+            <div class="flow-step">
+              <div class="step-icon model">2</div>
+              <strong>Model</strong>
+              <span>BigQuery Bronze, Silver, Gold</span>
+            </div>
+            <div class="flow-step">
+              <div class="step-icon validate">3</div>
+              <strong>Validate</strong>
+              <span>Pandas, NumPy, SQL checks</span>
+            </div>
+            <div class="flow-step">
+              <div class="step-icon serve">4</div>
+              <strong>Serve</strong>
+              <span>Reporting-ready datasets</span>
+            </div>
+          </div>
+
+          <div class="metric-strip">
+            <div class="metric">
+              <b>450+</b>
+              <span>Facilities</span>
+            </div>
+            <div class="metric">
+              <b>400MB-2GB</b>
+              <span>File sizes</span>
+            </div>
+            <div class="metric">
+              <b>650+</b>
+              <span>Stored procs</span>
+            </div>
+            <div class="metric">
+              <b>800+</b>
+              <span>Tables</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-block reveal" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">About</p>
+          <h2 id="about-title">Clear data systems for messy operational data.</h2>
+        </div>
+        <p>
+          I focus on building reliable paths from raw ingestion to analytics-ready datasets, with validation and observability built into the workflow.
+        </p>
+      </div>
+
+      <div class="about-layout">
+        <div class="surface about-copy">
+          <p>
+            I am a Dallas-based Data Engineer with 2+ years of experience designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains.
+          </p>
+          <p>
+            At Conifer Health Solutions, I worked on SFTP-to-GCP ingestion pipelines using Python, Apache Airflow, Cloud Run, Google Workflows, and BigQuery to process 400 MB-2 GB healthcare files across 450+ clinical facilities.
+          </p>
+          <p>
+            My work includes Medallion Architecture design, parameterized SQL stored procedures, DB2-to-BigQuery migration, BigQuery performance tuning, and Python/SQL validation frameworks with Pandas and NumPy.
+          </p>
+          <p>
+            I also build applied data engineering projects around healthcare claims, real-time financial sentiment, Kafka, Spark Structured Streaming, dbt, Airflow, Docker, TimescaleDB, PostgreSQL, and Grafana.
+          </p>
+        </div>
+
+        <ul class="surface quick-list">
+          <li>Pipeline ownership across ingestion, transformation, validation, and reporting layers.</li>
+          <li>Hands-on GCP and BigQuery experience with production healthcare data workflows.</li>
+          <li>Strong SQL background across SQL Server, T-SQL, DB2, MySQL, PostgreSQL, and BigQuery-style modeling.</li>
+          <li>Project depth in streaming systems, dbt marts, orchestration, and dashboard monitoring.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-block reveal" id="skills" aria-labelledby="skills-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">Skills</p>
+          <h2 id="skills-title">Stack grouped by data engineering workstream.</h2>
+        </div>
+        <p>Technology badges use distinct colors by category for quick recruiter scanning.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="surface skill-card">
+          <h3>Languages</h3>
+          <div class="badges">
+            <span class="badge language">Python</span>
+            <span class="badge language">SQL</span>
+            <span class="badge language">JavaScript</span>
+            <!-- Add Scala here if applicable. -->
+          </div>
+        </article>
+
+        <article class="surface skill-card">
+          <h3>Cloud Platforms</h3>
+          <div class="badges">
+            <span class="badge cloud">GCP</span>
+            <span class="badge cloud">BigQuery</span>
+            <span class="badge cloud">Cloud Run</span>
+            <span class="badge cloud">Google Workflows</span>
+            <!-- Add AWS or Azure here if applicable. -->
+          </div>
+        </article>
+
+        <article class="surface skill-card">
+          <h3>Data Stack</h3>
+          <div class="badges">
+            <span class="badge data">ETL/ELT</span>
+            <span class="badge data">Apache Airflow</span>
+            <span class="badge data">dbt</span>
+            <span class="badge data">Apache Kafka</span>
+            <span class="badge data">Spark Structured Streaming</span>
+            <span class="badge data">Data Modeling</span>
+            <span class="badge data">Data Quality</span>
+            <span class="badge data">Medallion Architecture</span>
+            <!-- Add Snowflake here if applicable. -->
+          </div>
+        </article>
+
+        <article class="surface skill-card">
+          <h3>Databases</h3>
+          <div class="badges">
+            <span class="badge database">PostgreSQL</span>
+            <span class="badge database">SQL Server</span>
+            <span class="badge database">T-SQL</span>
+            <span class="badge database">DB2</span>
+            <span class="badge database">MySQL</span>
+            <span class="badge database">TimescaleDB</span>
+          </div>
+        </article>
+
+        <article class="surface skill-card">
+          <h3>Tools</h3>
+          <div class="badges">
+            <span class="badge tool">Docker</span>
+            <span class="badge tool">Grafana</span>
+            <span class="badge tool">Pandas</span>
+            <span class="badge tool">NumPy</span>
+            <span class="badge tool">Git</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block reveal" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">Experience</p>
+          <h2 id="experience-title">Timeline of practical data work.</h2>
+        </div>
+        <p>Impact statements are written for hiring managers looking for ownership, scale, and production judgment.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="surface experience-card">
+            <div class="role-top">
+              <div>
+                <h3>Data Engineering Intern</h3>
+                <p>Conifer Health Solutions / USA</p>
+              </div>
+              <p class="role-date">Aug 2025 - May 2026</p>
+            </div>
+            <ul>
+              <li>Architected and deployed SFTP-to-GCP ingestion pipelines using Python, Apache Airflow, Cloud Run, and Google Workflows, reliably processing 400 MB-2 GB healthcare files across 450+ clinical facilities with zero data loss.</li>
+              <li>Designed a Medallion Architecture in BigQuery, separating raw ingestion, standardized transformation logic, and analytics-ready datasets for faster and more reliable operational reporting.</li>
+              <li>Led DB2-to-BigQuery migration work covering 650+ stored procedures and 800+ tables by rewriting SQL logic, validating source-to-target accuracy, and tuning BigQuery performance for production workloads.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="surface experience-card">
+            <div class="role-top">
+              <div>
+                <h3>Software Engineer</h3>
+                <p>Rabbit and Tortoise Technology Solutions / India</p>
+              </div>
+              <p class="role-date">Nov 2022 - Sep 2023</p>
+            </div>
+            <ul>
+              <li>Designed and implemented a normalized relational schema across products, invoices, customers, suppliers, payments, and inventory to enable accurate billing and real-time stock tracking across 1,000+ SKUs.</li>
+              <li>Built automated Excel ingestion pipelines with data validation checks and transaction-safe inventory updates, maintaining data integrity during bulk imports.</li>
+              <li>Supported offline-first PWA functionality for uninterrupted billing operations and business reporting.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="surface experience-card">
+            <div class="role-top">
+              <div>
+                <h3>Software Engineer Intern</h3>
+                <p>Bizsol IT Services / India</p>
+              </div>
+              <p class="role-date">Aug 2021 - Dec 2021</p>
+            </div>
+            <ul>
+              <li>Developed T-SQL reconciliation reports using complex joins, aggregations, and validation queries to detect and surface mismatches in taxation datasets.</li>
+              <li>Improved audit accuracy and supported business review cycles by making reconciliation issues easier to identify and review.</li>
+              <li>Optimized recurring SQL reporting workflows for better query execution time and reliability in financial reconciliation processes.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block reveal" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">Projects</p>
+          <h2 id="projects-title">Portfolio projects with platform thinking.</h2>
+        </div>
+        <p>Each project shows a different part of the data engineering loop: ingestion, modeling, orchestration, storage, and monitoring.</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="surface project-card">
+          <div>
+            <h3>Healthcare Claims Data Platform</h3>
+            <div class="badges">
+              <span class="badge language">Python</span>
+              <span class="badge database">PostgreSQL</span>
+              <span class="badge data">dbt</span>
+              <span class="badge data">Apache Airflow</span>
+              <span class="badge tool">Grafana</span>
+            </div>
+          </div>
+          <p>
+            Built a production-style claims data platform using the CMS SynPUF public dataset with 900K+ claim records and a full Bronze, Silver, and Gold architecture in PostgreSQL. Developed Python validation pipelines for duplicate claims, missing beneficiary IDs, negative payment amounts, and feed-level anomalies, then modeled dbt marts and monitored freshness, health, and KPIs in Grafana.
+          </p>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/VedantBajaj/healthcare-claims-data-platform" target="_blank" rel="noreferrer">GitHub</a>
+            <!-- Live link not provided. Add it here when available. -->
+          </div>
+        </article>
+
+        <article class="surface project-card">
+          <div>
+            <h3>Real-Time Financial Sentiment Analysis Platform</h3>
+            <div class="badges">
+              <span class="badge data">Apache Kafka</span>
+              <span class="badge data">Spark Structured Streaming</span>
+              <span class="badge database">TimescaleDB</span>
+              <span class="badge tool">Docker</span>
+              <span class="badge tool">Grafana</span>
+            </div>
+          </div>
+          <p>
+            Designed a near real-time platform that ingests live financial news, enriches each event with NLP sentiment scores and named-entity extraction, and persists time-series outputs to TimescaleDB. Implemented Kafka for fault-tolerant message queuing, Spark Structured Streaming for micro-batch processing, Docker Compose for reproducible deployment, and Grafana dashboards for freshness, throughput, health, and sentiment trends.
+          </p>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/VedantBajaj/sentiment-platform" target="_blank" rel="noreferrer">GitHub</a>
+            <!-- Live link not provided. Add it here when available. -->
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block reveal" id="education" aria-labelledby="education-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">Education</p>
+          <h2 id="education-title">Computer engineering foundation.</h2>
+        </div>
+        <p>Graduate and undergraduate computer engineering background supporting data systems work.</p>
+      </div>
+
+      <div class="education-grid">
+        <article class="surface education-card">
+          <h3>University of Texas at Dallas</h3>
+          <p>Master of Science in Computer Engineering</p>
+          <p>Aug 2024 - May 2026</p>
+        </article>
+        <article class="surface education-card">
+          <h3>University of Pune</h3>
+          <p>Bachelor of Technology in Computer Engineering</p>
+          <p>Aug 2018 - May 2022</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block reveal" id="contact" aria-labelledby="contact-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">Contact</p>
+          <h2 id="contact-title">Open to data engineering roles.</h2>
+        </div>
+        <p>Best fit: ETL/ELT ownership, GCP and BigQuery work, data quality, orchestration, streaming, and analytics reliability.</p>
+      </div>
+
+      <div class="contact-grid">
+        <a class="surface contact-card" href="mailto:vedant.bajaj99@gmail.com" aria-label="Email Vedant Bajaj">
+          <span class="icon" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </span>
+          <span>
+            <h3>Email</h3>
+            <p>vedant.bajaj99@gmail.com</p>
+          </span>
+        </a>
+
+        <a class="surface contact-card" href="https://www.linkedin.com/in/vedant-bajaj99/" target="_blank" rel="noreferrer" aria-label="Open Vedant Bajaj LinkedIn profile">
+          <span class="icon" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V9H7.1v11.45ZM22.23 0H1.76C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.76 24h20.47c.97 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0Z"></path>
+            </svg>
+          </span>
+          <span>
+            <h3>LinkedIn</h3>
+            <p>linkedin.com/in/vedant-bajaj99</p>
+          </span>
+        </a>
+
+        <a class="surface contact-card" href="https://github.com/VedantBajaj" target="_blank" rel="noreferrer" aria-label="Open Vedant Bajaj GitHub profile">
+          <span class="icon" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.14c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18A11.04 11.04 0 0 1 12 6.04c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.16c0 .31.21.67.79.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"></path>
+            </svg>
+          </span>
+          <span>
+            <h3>GitHub</h3>
+            <p>github.com/VedantBajaj</p>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Vedant Bajaj</span>
+      <span>Single-file portfolio. No build step required.</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-button");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const year = document.getElementById("year");
+
+    year.textContent = new Date().getFullYear();
+
+    menuButton.addEventListener("click", () => {
+      const open = document.body.classList.toggle("menu-open");
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        document.body.classList.remove("menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
