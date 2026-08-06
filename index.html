@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Vedant Bajaj is a Data Engineer in Dallas, TX designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains." />
+  <meta name="description" content="Vedant Bajaj is a Microsoft Certified Fabric Data Engineer Associate in Dallas, TX, building scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks." />
   <meta name="theme-color" content="#f7fbff" />
   <meta property="og:title" content="Vedant Bajaj | Data Engineer in Dallas, TX" />
-  <meta property="og:description" content="Data engineering portfolio for Vedant Bajaj: scalable ETL/ELT pipelines, GCP, BigQuery, Airflow, dbt, Kafka, Spark, PostgreSQL, TimescaleDB, and data quality frameworks." />
+  <meta property="og:description" content="Portfolio of Microsoft Certified Fabric Data Engineer Associate Vedant Bajaj, featuring scalable pipelines, cloud warehouses, streaming systems, and data quality engineering." />
   <meta property="og:type" content="website" />
-  <title>Vedant Bajaj | Data Engineer in Dallas, TX</title>
+  <title>Vedant Bajaj | Microsoft Certified Data Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -588,6 +588,81 @@
       color: #af3146;
     }
 
+    .certification-feature {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 1.25rem;
+      align-items: center;
+      padding: 1.35rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .certification-feature::after {
+      content: "DP-700";
+      position: absolute;
+      right: 1rem;
+      bottom: -1.1rem;
+      color: rgba(47, 128, 237, 0.07);
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .certification-mark {
+      width: 5rem;
+      height: 5rem;
+      display: grid;
+      place-items: center;
+      border-radius: 1.35rem;
+      background: linear-gradient(135deg, #153a5b, #2f80ed);
+      color: white;
+      box-shadow: 0 16px 34px rgba(47, 128, 237, 0.22);
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .certification-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .certification-copy h3 {
+      margin-bottom: 0.35rem;
+      font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+    }
+
+    .certification-copy p {
+      margin-bottom: 0.3rem;
+      color: var(--muted);
+    }
+
+    .certification-meta {
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .certification-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      min-width: 10.5rem;
+    }
+
+    .certification-actions .project-link {
+      width: 100%;
+    }
+
+    .credential-note {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .timeline {
       position: relative;
       display: grid;
@@ -843,10 +918,20 @@
 
       .flow-row,
       .metric-strip,
+      .certification-feature,
       .projects-grid,
       .education-grid,
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .certification-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .certification-actions {
+        flex-direction: row;
+        min-width: 0;
       }
 
       .role-top {
@@ -878,7 +963,8 @@
       }
 
       .cta-row,
-      .project-links {
+      .project-links,
+      .certification-actions {
         flex-direction: column;
       }
 
@@ -919,6 +1005,7 @@
       <nav class="nav-links" id="site-nav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#certifications">Certification</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
@@ -935,15 +1022,16 @@
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Data Engineer / Dallas, TX</p>
+        <p class="eyebrow">Microsoft Certified Data Engineer / Dallas, TX</p>
         <h1 id="hero-title">Vedant Bajaj</h1>
         <p class="hero-tagline">Production-minded data engineer building pipelines, warehouses, and quality checks that teams can trust.</p>
         <p class="hero-summary">
-          2+ years of experience designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains.
+          Microsoft Certified: Fabric Data Engineer Associate with 2+ years of experience designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains.
         </p>
         <div class="cta-row">
           <a class="button button-primary" href="#projects">View Projects</a>
           <a class="button button-secondary" href="Vedant_Bajaj_Resume_DE.pdf" download>Download Resume</a>
+          <a class="button button-secondary" href="#certifications">View Certification</a>
         </div>
       </div>
 
@@ -1013,7 +1101,7 @@
       <div class="about-layout">
         <div class="surface about-copy">
           <p>
-            I am a Dallas-based Data Engineer with 2+ years of experience designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains.
+            I am a Dallas-based, Microsoft Certified Fabric Data Engineer Associate with 2+ years of experience designing scalable ETL/ELT pipelines, cloud data warehouses, and data quality frameworks across healthcare and financial domains.
           </p>
           <p>
             At Conifer Health Solutions, I worked on SFTP-to-GCP ingestion pipelines using Python, Apache Airflow, Cloud Run, Google Workflows, and BigQuery to process 400 MB-2 GB healthcare files across 450+ clinical facilities.
@@ -1028,6 +1116,7 @@
 
         <ul class="surface quick-list">
           <li>Pipeline ownership across ingestion, transformation, validation, and reporting layers.</li>
+          <li>Microsoft Certified: Fabric Data Engineer Associate, earned August 2026.</li>
           <li>Hands-on GCP and BigQuery experience with production healthcare data workflows.</li>
           <li>Strong SQL background across SQL Server, T-SQL, DB2, MySQL, PostgreSQL, and BigQuery-style modeling.</li>
           <li>Project depth in streaming systems, dbt marts, orchestration, and dashboard monitoring.</li>
@@ -1062,7 +1151,8 @@
             <span class="badge cloud">BigQuery</span>
             <span class="badge cloud">Cloud Run</span>
             <span class="badge cloud">Google Workflows</span>
-            <!-- Add AWS or Azure here if applicable. -->
+            <span class="badge cloud">Microsoft Fabric</span>
+            <span class="badge cloud">Fabric Data Engineering</span>
           </div>
         </article>
 
@@ -1077,7 +1167,7 @@
             <span class="badge data">Data Modeling</span>
             <span class="badge data">Data Quality</span>
             <span class="badge data">Medallion Architecture</span>
-            <!-- Add Snowflake here if applicable. -->
+            <span class="badge data">Lakehouse Architecture</span>
           </div>
         </article>
 
@@ -1104,6 +1194,30 @@
           </div>
         </article>
       </div>
+    </section>
+
+    <section class="section-block reveal" id="certifications" aria-labelledby="certifications-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">Certification</p>
+          <h2 id="certifications-title">Microsoft-certified Fabric data engineering expertise.</h2>
+        </div>
+        <p>Verified credential demonstrating focused knowledge of data ingestion, transformation, orchestration, and analytics-ready data solutions in Microsoft Fabric.</p>
+      </div>
+
+      <article class="surface certification-feature">
+        <div class="certification-mark" aria-hidden="true">MS</div>
+        <div class="certification-copy">
+          <h3>Microsoft Certified: Fabric Data Engineer Associate</h3>
+          <p>Credential earned by successfully completing the DP-700 certification requirements.</p>
+          <p class="certification-meta">Earned: August 5, 2026 &nbsp;•&nbsp; Expires: August 5, 2027</p>
+        </div>
+        <div class="certification-actions">
+          <a class="project-link" href="https://learn.microsoft.com/en-gb/users/vedantbajaj-3780/credentials/certification/fabric-data-engineer-associate?tab=credentials-tab" target="_blank" rel="noreferrer">Verify Credential</a>
+          <a class="project-link" href="VedantBajaj%20_%20MicrosoftDP-700.pdf" target="_blank" rel="noreferrer">View Certificate</a>
+        </div>
+      </article>
+      <p class="credential-note">Credential ID: 3AB9C2D32B9B6BDF &nbsp;•&nbsp; Certification number: 9F57AU-54B78A</p>
     </section>
 
     <section class="section-block reveal" id="experience" aria-labelledby="experience-title">
@@ -1253,7 +1367,7 @@
           <p class="kicker">Contact</p>
           <h2 id="contact-title">Open to data engineering roles.</h2>
         </div>
-        <p>Best fit: ETL/ELT ownership, GCP and BigQuery work, data quality, orchestration, streaming, and analytics reliability.</p>
+        <p>Best fit: Microsoft Fabric, ETL/ELT ownership, GCP and BigQuery, data quality, orchestration, streaming, and analytics reliability.</p>
       </div>
 
       <div class="contact-grid">
@@ -1300,7 +1414,6 @@
   <footer class="footer">
     <div class="footer-inner">
       <span>© <span id="year"></span> Vedant Bajaj</span>
-      <span>Single-file portfolio. No build step required.</span>
     </div>
   </footer>
 
