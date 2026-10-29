@@ -5,7 +5,7 @@ Single-file portfolio for data engineering roles.
 ## Files
 
 - `index.html` - complete website with inline CSS and JavaScript
-- `Vedant_Bajaj_DataEngineering_Resume.docx` - resume linked by the Download Resume button
+- `Vedant_Bajaj_Resume_DE.pdf` - resume linked by the Download Resume button
 
 ## GitHub Pages
 
